@@ -19,4 +19,4 @@ use Illuminate\Support\Facades\Route;
 // });                                       commentate perchè l'api che utilizzeremo non è nella fase di auth
 
 Route::get('/posts', 'Api\PostController@index')->name('posts.index');
-Route::get('/posts/{post}', 'Api\PostController@show')->name('posts.show');
+Route::get('/posts/{post:id}', 'Api\PostController@show')->name('posts.show');
