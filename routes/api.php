@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });                                       commentate perchè l'api che utilizzeremo non è nella fase di auth
+
+Route::get('/posts', 'Api\PostController@index')->name('posts.index');
+Route::get('/posts/{post}', 'Api\PostController@show')->name('posts.show');

@@ -6,7 +6,7 @@
             @csrf
             <div class="mb-3 col-12">
                 <label for="title" class="form-label">Titolo</label>
-                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{ old('title') }}">
+                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{ old('title') }}" data-sluger="title">
                 <div class="invalid-feedback">
                     @error('title')
                         <ul>
@@ -18,17 +18,24 @@
                 </div>
             </div>
 
-            <div class="mb-3 col-12">
+            <div class="mb-3">
                 <label for="slug" class="form-label">Slug</label>
-                <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" value="{{ old('slug') }}">
-                <div class="invalid-feedback">
-                    @error('slug')
-                        <ul>
-                            @foreach ($errors->get('slug') as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    @enderror
+                <div class="row">
+                    <div class="col-9">
+                        <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" value="{{ old('slug') }}" data-sluger="slug">
+                        <div class="invalid-feedback">
+                            @error('slug')
+                                <ul>
+                                    @foreach ($errors->get('slug') as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <button type="button" class="btn btn-primary" data-sluger="button">generate</button>
+                    </div>
                 </div>
             </div>
 

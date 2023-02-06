@@ -49674,6 +49674,29 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app'
 });
+var inputTitle = document.querySelector('[data-sluger=title]');
+var inputSlug = document.querySelector('[data-sluger=slug]');
+var btnGetSlug = document.querySelector('[data-sluger=button]');
+if (inputTitle && inputSlug && btnGetSlug) {
+  var getSlug = function getSlug() {
+    var slug;
+    axios.get('/admin/categories/slug?title=' + inputTitle.value).then(function (response) {
+      return inputSlug.value = response.data.slug;
+    });
+    axios.get('/admin/tags/slug?title=' + inputTitle.value).then(function (response) {
+      return inputSlug.value = response.data.slug;
+    });
+    axios.get('/admin/posts/slug?title=' + inputTitle.value).then(function (response) {
+      return inputSlug.value = response.data.slug;
+    });
+  };
+  inputTitle.addEventListener('focusout', function () {
+    if (inputSlug.value === '') {
+      getSlug();
+    }
+  });
+  btnGetSlug.addEventListener('click', getSlug);
+}
 
 /***/ }),
 
@@ -49813,8 +49836,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\angel\OneDrive\Desktop\boolean\laravel\laravel-many-to-many\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\angel\OneDrive\Desktop\boolean\laravel\laravel-many-to-many\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\angel\OneDrive\Desktop\boolean\laravel\laravel-api\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\angel\OneDrive\Desktop\boolean\laravel\laravel-api\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
